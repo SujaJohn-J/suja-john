@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Suja John — Data Science, Machine Learning, and Analytics portfolio." />
+  <title>Suja John | Data Science Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(19, 27, 49, .78);
+      --panel-solid: #131b31;
+      --text: #eef2ff;
+      --muted: #a7b2cc;
+      --accent: #7c9cff;
+      --accent-2: #5eead4;
+      --border: rgba(164, 180, 220, .18);
+      --shadow: 0 18px 55px rgba(0, 0, 0, .25);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(91, 112, 255, .18), transparent 32rem),
+        radial-gradient(circle at 90% 30%, rgba(42, 211, 191, .10), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(11, 16, 32, .82); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.15rem; }
+    .brand span { color: var(--accent-2); }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: .94rem; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+    .menu-btn { display: none; background: transparent; color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 10px; cursor: pointer; }
+    .hero { display: grid; grid-template-columns: 1.4fr .8fr; align-items: center; gap: 48px; padding: 92px 0 78px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent-2); font-size: .83rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 5px rgba(94, 234, 212, .12); }
+    h1 { margin: 18px 0; font-size: clamp(2.8rem, 7vw, 5.2rem); line-height: 1.03; letter-spacing: -.065em; }
+    .gradient-text { background: linear-gradient(100deg, #9eb4ff, #5eead4); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p { max-width: 660px; color: var(--muted); font-size: 1.1rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 12px; padding: 12px 17px; border: 1px solid var(--border); font-weight: 700; transition: transform .2s, border-color .2s, background .2s; cursor: pointer; }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(124, 156, 255, .65); }
+    .btn-primary { color: #091022; background: linear-gradient(100deg, #9eb4ff, #5eead4); border: 0; }
+    .profile-card { padding: 28px; border: 1px solid var(--border); border-radius: 24px; background: linear-gradient(145deg, rgba(27, 39, 70, .9), rgba(17, 24, 43, .72)); box-shadow: var(--shadow); transform: rotate(1deg); }
+    .avatar { width: 82px; height: 82px; display: grid; place-items: center; border-radius: 23px; background: linear-gradient(135deg, #9eb4ff, #5eead4); color: #091022; font-size: 1.8rem; font-weight: 900; margin-bottom: 20px; }
+    .profile-card h2 { margin: 0; font-size: 1.35rem; }
+    .profile-card p { font-size: .95rem; margin: 7px 0 18px; }
+    .mini-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .mini-stat { background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 14px; padding: 13px; }
+    .mini-stat strong { display: block; font-size: 1.2rem; }
+    .mini-stat span { color: var(--muted); font-size: .8rem; }
+    section { padding: 64px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; }
+    .kicker { color: var(--accent-2); text-transform: uppercase; letter-spacing: .12em; font-weight: 800; font-size: .75rem; }
+    h2.section-title { margin: 5px 0 0; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.045em; }
+    .section-desc { color: var(--muted); max-width: 520px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 25px; box-shadow: var(--shadow); }
+    .panel p { color: var(--muted); margin-top: 0; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 9px; }
+    .tag { color: #dbe5ff; background: rgba(124, 156, 255, .11); border: 1px solid rgba(124, 156, 255, .2); padding: 7px 11px; border-radius: 999px; font-size: .84rem; }
+    .project-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 20px; }
+    .search { flex: 1 1 220px; min-width: 0; color: var(--text); background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; outline: none; }
+    .search:focus { border-color: var(--accent); }
+    .filter-btn { color: var(--muted); border: 1px solid var(--border); background: transparent; border-radius: 999px; padding: 9px 13px; cursor: pointer; }
+    .filter-btn.active, .filter-btn:hover { color: var(--text); background: rgba(124, 156, 255, .15); border-color: rgba(124, 156, 255, .5); }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project-card { display: flex; flex-direction: column; min-height: 315px; background: var(--panel); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: transform .22s, border-color .22s; }
+    .project-card:hover { transform: translateY(-5px); border-color: rgba(124, 156, 255, .6); }
+    .project-banner { height: 110px; display: flex; align-items: end; padding: 17px; background: linear-gradient(130deg, rgba(124,156,255,.25), rgba(94,234,212,.12)); }
+    .project-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; font-size: 1.45rem; background: rgba(11,16,32,.6); border: 1px solid var(--border); }
+    .project-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+    .project-body h3 { margin: 0 0 9px; font-size: 1.12rem; }
+    .project-body p { color: var(--muted); font-size: .91rem; margin: 0 0 16px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-bottom: 17px; }
+    .project-tags span { font-size: .72rem; color: #c4d1f2; background: rgba(255,255,255,.055); padding: 4px 8px; border-radius: 7px; }
+    .project-links { display: flex; gap: 14px; font-size: .88rem; font-weight: 700; }
+    .project-links a { color: var(--accent-2); }
+    .project-links a:hover { text-decoration: underline; }
+    .empty-state { display: none; padding: 28px; color: var(--muted); text-align: center; border: 1px dashed var(--border); border-radius: 16px; }
+    .timeline { display: grid; gap: 14px; }
+    .timeline-item { display: grid; grid-template-columns: 42px 1fr; gap: 16px; }
+    .timeline-icon { width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center; color: var(--accent-2); background: rgba(94,234,212,.1); border: 1px solid rgba(94,234,212,.18); }
+    .timeline-item h3 { margin: 0 0 4px; font-size: 1.02rem; }
+    .timeline-item p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .contact-panel { display: flex; justify-content: space-between; align-items: center; gap: 24px; background: linear-gradient(110deg, rgba(124,156,255,.14), rgba(94,234,212,.08)); }
+    .contact-panel p { max-width: 650px; margin-bottom: 0; }
+    footer { border-top: 1px solid var(--border); padding: 25px 0; color: var(--muted); font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; gap: 28px; padding-top: 65px; }
+      .profile-card { max-width: 480px; transform: none; }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .menu-btn { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 71px; left: 0; right: 0; padding: 18px 22px; flex-direction: column; align-items: flex-start; background: #0f1629; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .hero { padding: 54px 0 42px; }
+      section { padding: 45px 0; }
+      .section-head { display: block; }
+      .section-desc { margin-top: 10px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .contact-panel { display: block; }
+      .contact-panel .btn { margin-top: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home">Suja<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <header class="container hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="status-dot"></span> Data Science · Machine Learning · Analytics</div>
+        <h1>Turning data into <span class="gradient-text">useful decisions.</span></h1>
+        <p>
+          Hello, I’m <strong>Suja John</strong> — a data science graduate interested in machine learning,
+          explainable AI, data engineering, and business intelligence. I build projects that turn raw data
+          into clear insights and practical solutions.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore my projects ↘</a>
+          <a class="btn" href="https://github.com/SujaJohn-J" target="_blank" rel="noreferrer">GitHub profile ↗</a>
+          <a class="btn" href="#contact">Contact me</a>
+        </div>
+      </div>
+      <aside class="profile-card" aria-label="Portfolio summary">
+        <div class="avatar">SJ</div>
+        <h2>Data Science Portfolio</h2>
+        <p>Python · SQL · ML · Visualization</p>
+        <div class="mini-stats">
+          <div class="mini-stat"><strong>ML</strong><span>Predictive modelling</span></div>
+          <div class="mini-stat"><strong>BI</strong><span>Dashboards & reporting</span></div>
+          <div class="mini-stat"><strong>AI</strong><span>Model explainability</span></div>
+          <div class="mini-stat"><strong>Data</strong><span>Exploration & features</span></div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">A little about me</div><h2 class="section-title">Curious by nature. Analytical by design.</h2></div>
+          <p class="section-desc">I enjoy combining analytical thinking, experimentation, and visual storytelling to solve real-world problems.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel reveal">
+            <h3>My approach</h3>
+            <p>I start by understanding the problem and exploring the data. Then I clean and prepare datasets, engineer meaningful features, compare models, evaluate results, and communicate findings in a way that people can use.</p>
+            <p>My portfolio highlights practical work in predictive modelling, transaction analytics, model evaluation, and data visualization.</p>
+          </article>
+          <article class="panel reveal" id="skills">
+            <h3>Core toolkit</h3>
+            <div class="skill-list">
+              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+              <span class="tag">Scikit-learn</span><span class="tag">SQL</span><span class="tag">Statistics</span>
+              <span class="tag">Feature Engineering</span><span class="tag">Model Evaluation</span>
+              <span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Plotly</span>
+              <span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Jupyter</span>
+              <span class="tag">Git & GitHub</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">Selected work</div><h2 class="section-title">Projects that show how I think</h2></div>
+          <p class="section-desc">Use the search and filters to explore projects. Replace the sample links with your actual GitHub repository URLs.</p>
+        </div>
+        <div class="project-tools reveal">
+          <input class="search" type="search" id="projectSearch" placeholder="Search projects or technologies…" aria-label="Search projects" />
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="machine learning">Machine Learning</button>
+          <button class="filter-btn" data-filter="analytics">Analytics</button>
+          <button class="filter-btn" data-filter="visualization">Visualization</button>
+        </div>
+        <div class="project-grid" id="projectGrid">
+          <article class="project-card reveal" data-category="machine learning" data-search="open banking credit risk affordability fraud python pandas scikit-learn explainability logistic regression">
+            <div class="project-banner"><div class="project-icon">📊</div></div>
+            <div class="project-body">
+              <h3>Open Banking Credit Risk Analysis</h3>
+              <p>An end-to-end machine learning project exploring transaction behaviour, engineering financial features, and predicting credit-risk outcomes.</p>
+              <div class="project-tags"><span>Python</span><span>Pandas</span><span>Scikit-learn</span><span>Explainable ML</span></div>
+              <div class="project-links"><a href="https://github.com/SujaJohn-J" target="_blank" rel="noreferrer">View repository ↗</a><a href="#contact">Case study ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="analytics" data-search="transaction analysis exploratory data analysis pandas statistics data cleaning">
+            <div class="project-banner"><div class="project-icon">🔎</div></div>
+            <div class="project-body">
+              <h3>Transaction Data Exploration</h3>
+              <p>Exploratory analysis of transaction categories, spending patterns, distributions, and data quality to uncover useful behavioural signals.</p>
+              <div class="project-tags"><span>EDA</span><span>Statistics</span><span>Data Cleaning</span></div>
+              <div class="project-links"><a href="https://github.com/SujaJohn-J" target="_blank" rel="noreferrer">View repository ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="machine learning" data-search="model training logistic regression random forest roc auc gini ks confusion matrix">
+            <div class="project-banner"><div class="project-icon">🤖</div></div>
+            <div class="project-body">
+              <h3>Model Comparison & Evaluation</h3>
+              <p>Compare baseline and tree-based models using ROC-AUC, confusion matrices, and threshold analysis, with attention to class imbalance.</p>
+              <div class="project-tags"><span>Logistic Regression</span><span>Random Forest</span><span>Metrics</span></div>
+              <div class="project-links"><a href="https://github.com/SujaJohn-J" target="_blank" rel="noreferrer">View repository ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="visualization" data-search="power bi tableau dashboard business intelligence visualization storytelling">
+            <div class="project-banner"><div class="project-icon">📈</div></div>
+            <div class="project-body">
+              <h3>Business Intelligence Dashboard</h3>
+              <p>A dashboard concept for turning business data into accessible KPIs, trends, and interactive visual summaries for decision-makers.</p>
+              <div class="project-tags"><span>Power BI</span><span>Tableau</span><span>Data Storytelling</span></div>
+              <div class="project-links"><a href="https://github.com/SujaJohn-J" target="_blank" rel="noreferrer">View repository ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="visualization" data-search="model explainability feature importance coefficients visualization matplotlib plotly">
+            <div class="project-banner"><div class="project-icon">🧭</div></div>
+            <div class="project-body">
+              <h3>Model Explainability & Feature Insights</h3>
+              <p>Explore which input features influence model predictions and communicate model behaviour with clear charts and interpretation.</p>
+              <div class="project-tags"><span>Feature Importance</span><span>Matplotlib</span><span>Plotly</span></div>
+              <div class="project-links"><a href="https://github.com/SujaJohn-J" target="_blank" rel="noreferrer">View repository ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="analytics" data-search="sql data analysis relational datasets queries reporting">
+            <div class="project-banner"><div class="project-icon">🗃️</div></div>
+            <div class="project-body">
+              <h3>SQL Analytics & Reporting</h3>
+              <p>A collection of SQL analysis examples covering data extraction, joins, aggregations, and reporting-ready datasets.</p>
+              <div class="project-tags"><span>SQL</span><span>Data Analysis</span><span>Reporting</span></div>
+              <div class="project-links"><a href="https://github.com/SujaJohn-J" target="_blank" rel="noreferrer">View repository ↗</a></div>
+            </div>
+          </article>
+        </div>
+        <div class="empty-state" id="emptyState">No projects match that search. Try another keyword or filter.</div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">My journey</div><h2 class="section-title">Learning through building</h2></div>
+          <p class="section-desc">A concise overview of my academic foundation and the practical skills I’m developing.</p>
+        </div>
+        <div class="panel timeline reveal">
+          <div class="timeline-item">
+            <div class="timeline-icon">🎓</div>
+            <div><h3>Data Science education</h3><p>Studied data science in Sweden, including machine learning, predictive modelling, and communicating results through visualizations.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">🧪</div>
+            <div><h3>Hands-on project work</h3><p>Practising the full workflow: data exploration, feature engineering, model training, evaluation, and explainability.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">🚀</div>
+            <div><h3>What I’m working toward</h3><p>Building reliable, well-documented portfolio projects for opportunities in data science, machine learning, analytics, and data engineering.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="panel contact-panel reveal">
+          <div><div class="kicker">Let’s connect</div><h2 class="section-title">Have a data problem to solve?</h2><p>I’m happy to connect about data science projects, collaboration, and suitable opportunities.</p></div>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://github.com/SujaJohn-J" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a class="btn" href="mailto:your.email@example.com">Email me ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Suja John. Built with HTML, CSS & JavaScript.</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Project search and category filters
+    const searchInput = document.getElementById('projectSearch');
+    const filterButtons = [...document.querySelectorAll('.filter-btn')];
+    const projectCards = [...document.querySelectorAll('.project-card')];
+    const emptyState = document.getElementById('emptyState');
+    let activeFilter = 'all';
+
+    function filterProjects() {
+      const term = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+      projectCards.forEach(card => {
+        const matchesFilter = activeFilter === 'all' || card.dataset.category === activeFilter;
+        const matchesSearch = (card.dataset.search + ' ' + card.innerText).toLowerCase().includes(term);
+        const show = matchesFilter && matchesSearch;
+        card.style.display = show ? 'flex' : 'none';
+        if (show) visibleCount++;
+      });
+      emptyState.style.display = visibleCount ? 'none' : 'block';
+    }
+    searchInput.addEventListener('input', filterProjects);
+    filterButtons.forEach(button => button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter;
+      filterButtons.forEach(item => item.classList.toggle('active', item === button));
+      filterProjects();
+    }));
+
+    // Reveal sections as they enter the viewport
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
