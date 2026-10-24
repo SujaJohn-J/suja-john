@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details | Suja John</title>
+
+  <style>
+    :root {
+      --background: #08111f;
+      --panel: #101d2e;
+      --text: #eef5ff;
+      --muted: #a6b5c8;
+      --accent: #70e1c1;
+      --border: #25364b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header, main, footer {
+      width: min(100% - 40px, 950px);
+      margin: auto;
+    }
+
+    header {
+      padding: 25px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    main {
+      padding: 55px 0;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 48px);
+      line-height: 1.2;
+      margin: 12px 0;
+    }
+
+    h2 {
+      margin-top: 32px;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      margin-top: 25px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .tag {
+      color: var(--accent);
+      border: 1px solid #315b58;
+      background: #102a2b;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #08111f;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="./index.html">← Back to Suja John's Portfolio</a>
+  </header>
+
+  <main>
+    <p class="eyebrow">Project case study</p>
+    <h1 id="title">Project Details</h1>
+    <p id="intro">Explore the project's goals, methods and results.</p>
+
+    <div class="tags" id="technologies"></div>
+
+    <section class="panel">
+      <h2>Project Overview</h2>
+      <p id="overview"></p>
+
+      <h2>Objectives</h2>
+      <ul id="objectives"></ul>
+
+      <h2>Methodology</h2>
+      <p id="methodology"></p>
+
+      <h2>Results and Learnings</h2>
+      <p id="results"></p>
+    </section>
+
+    <div class="buttons">
+      <a class="btn" id="github" href="https://github.com/SujaJohn-J">
+        View GitHub Repository ↗
+      </a>
+      <a class="btn btn-secondary" href="./index.html">
+        All Projects
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Suja John · Data Science Portfolio
+  </footer>
+
+  <script>
+    const projects = {
+      "credit-risk": {
+        title: "Open Banking Credit Risk Analysis",
+        intro: "Using financial transaction data to explore credit risk and affordability.",
+        overview: "This project explores how transaction-level financial information can be transformed into features for credit risk analysis. The aim is to demonstrate a practical machine learning workflow using financial data.",
+        objectives: [
+          "Explore financial transaction patterns.",
+          "Engineer income, expense and cash-flow features.",
+          "Train and evaluate a classification model."
+        ],
+        methodology: "The workflow includes data exploration, feature engineering, logistic regression, model evaluation and explainability. The analysis uses Python and common data science libraries.",
+        results: "The current test evaluation recorded a ROC-AUC of approximately 0.708. This is an educational portfolio project, not a validated lending or credit decision system.",
+        technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib"],
+        repo: "https://github.com/SujaJohn-J"
+      },
+
+      "transaction-analysis": {
+        title: "Transaction Data Exploration",
+        intro: "Discovering patterns and trends in financial transaction data.",
+        overview: "This project focuses on understanding transaction data before building predictive models.",
+        objectives: [
+          "Inspect data quality and missing values.",
+          "Study transaction amounts and categories.",
+          "Identify patterns that can inform feature engineering."
+        ],
+        methodology: "Use Python and Pandas for data cleaning, descriptive statistics and exploratory data analysis, supported by visualisations.",
+        results: "The analysis provides a foundation for subsequent feature engineering and credit risk modelling. Add your specific charts and findings here.",
+        technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+        repo: "https://github.com/SujaJohn-J"
+      },
+
+      "model-comparison": {
+        title: "Model Comparison & Evaluation",
+        intro: "Comparing machine learning models using classification metrics.",
+        overview: "This project examines how different classification models perform on a credit risk prediction task.",
+        objectives: [
+          "Train baseline classification models.",
+          "Compare ROC-AUC, Gini and KS statistics.",
+          "Inspect confusion matrices and classification errors."
+        ],
+        methodology: "Compare logistic regression and random forest models, using validation and test evaluation to understand predictive performance.",
+        results: "The current test ROC-AUC for the selected model is approximately 0.708. Results should be interpreted alongside class balance, threshold selection and the cost of different errors.",
+        technologies: ["Python", "Scikit-learn", "Pandas", "Model Evaluation"],
+        repo: "https://github.com/SujaJohn-J"
+      },
+
+      "bi-dashboard": {
+        title: "Business Intelligence Dashboard",
+        intro: "Turning data into clear and useful business insights.",
+        overview: "This project demonstrates the use of business intelligence tools to communicate key performance indicators and trends.",
+        objectives: [
+          "Define useful business metrics.",
+          "Organise data for reporting.",
+          "Present insights through interactive visualisations."
+        ],
+        methodology: "Use Power BI or Tableau to build charts and dashboard views. Update this section with the actual data source and dashboard features.",
+        results: "Add screenshots, key findings and the dashboard link when available.",
+        technologies: ["Power BI", "Tableau", "Data Visualisation", "Reporting"],
+        repo: "https://github.com/SujaJohn-J"
+      },
+
+      "explainability": {
+        title: "Model Explainability & Feature Insights",
+        intro: "Understanding which features influence model predictions.",
+        overview: "This project focuses on making machine learning results easier to interpret by examining model coefficients and feature importance.",
+        objectives: [
+          "Inspect the influence of engineered features.",
+          "Explain model behaviour in understandable terms.",
+          "Communicate model limitations clearly."
+        ],
+        methodology: "Use logistic regression coefficients and suitable visualisations to explore relationships between model inputs and predictions. Interpret coefficients with attention to feature scaling and encoding.",
+        results: "Add your final feature-importance table and chart here. Associations in a model do not necessarily indicate causation.",
+        technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+        repo: "https://github.com/SujaJohn-J"
+      },
+
+      "sql-analytics": {
+        title: "SQL Analytics & Reporting",
+        intro: "Using SQL to organise, analyse and report on structured data.",
+        overview: "This project showcases SQL-based data retrieval, aggregation and reporting for analytical questions.",
+        objectives: [
+          "Write queries to filter and join datasets.",
+          "Use aggregations to summarise data.",
+          "Produce results that support reporting and decision-making."
+        ],
+        methodology: "Document your actual SQL queries, database schema, joins, common table expressions and window functions where used.",
+        results: "Add sample queries, example outputs and the business questions answered by the analysis.",
+        technologies: ["SQL", "Data Analysis", "Reporting"],
+        repo: "https://github.com/SujaJohn-J"
+      }
+    };
+
+    const projectId = new URLSearchParams(window.location.search)
+      .get("project");
+
+    const project = projects[projectId];
+
+    if (project) {
+      document.title = project.title + " | Suja John";
+      document.getElementById("title").textContent = project.title;
+      document.getElementById("intro").textContent = project.intro;
+      document.getElementById("overview").textContent = project.overview;
+      document.getElementById("methodology").textContent = project.methodology;
+      document.getElementById("results").textContent = project.results;
+      document.getElementById("github").href = project.repo;
+
+      const tags = document.getElementById("technologies");
+      project.technologies.forEach(technology => {
+        const span = document.createElement("span");
+        span.className = "tag";
+        span.textContent = technology;
+        tags.appendChild(span);
+      });
+
+      const objectives = document.getElementById("objectives");
+      project.objectives.forEach(objective => {
+        const li = document.createElement("li");
+        li.textContent = objective;
+        objectives.appendChild(li);
+      });
+    } else {
+      document.getElementById("title").textContent = "Project not found";
+      document.getElementById("intro").textContent =
+        "Please return to the portfolio and choose a project.";
+      document.getElementById("overview").textContent =
+        "Choose one of the project cards on the main portfolio page.";
+      document.getElementById("methodology").textContent = "";
+      document.getElementById("results").textContent = "";
+      document.getElementById("objectives").replaceChildren();
+      document.getElementById("github").hidden = true;
+      document.getElementById("technologies").hidden = true;
+    }
+  </script>
+</body>
+</html>
