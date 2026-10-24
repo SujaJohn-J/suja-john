@@ -86,9 +86,11 @@
     .project-body p { color: var(--muted); font-size: .91rem; margin: 0 0 16px; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-bottom: 17px; }
     .project-tags span { font-size: .72rem; color: #c4d1f2; background: rgba(255,255,255,.055); padding: 4px 8px; border-radius: 7px; }
-    .project-links { display: flex; gap: 14px; font-size: .88rem; font-weight: 700; }
-    .project-links a { color: var(--accent-2); }
-    .project-links a:hover { text-decoration: underline; }
+    .project-links { display: flex; gap: 14px; font-size: .88rem; font-weight: 700; margin-top: 10px; }
+    .project-links a:not(.btn) { color: var(--accent-2); }
+    .project-links .btn { color: var(--text); text-decoration: none; }
+    .project-links .btn-primary { color: #091022; }
+    .project-links .btn:hover { text-decoration: none; }
     .empty-state { display: none; padding: 28px; color: var(--muted); text-align: center; border: 1px dashed var(--border); border-radius: 16px; }
     .timeline { display: grid; gap: 14px; }
     .timeline-item { display: grid; grid-template-columns: 42px 1fr; gap: 16px; }
